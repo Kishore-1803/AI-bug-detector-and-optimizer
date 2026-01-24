@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.glass {
+  background: rgba(10, 10, 20, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+}
+
+.hud-panel {
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.05), inset 0 0 20px rgba(56, 189, 248, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.hud-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), transparent);
+  animation: scan 2s linear infinite;
+}
+
+.hud-panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2px solid rgba(56, 189, 248, 0.8);
+  border-right: 2px solid rgba(56, 189, 248, 0.8);
+}
+
+.hud-text {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+.scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0,0,0,0.2) 50%,
+    rgba(0,0,0,0.2)
+  );
+  background-size: 100% 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.3;
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted)); 
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground)); 
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
