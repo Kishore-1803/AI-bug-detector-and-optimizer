@@ -34,7 +34,8 @@ The system uses a directed cyclic graph (DAG) managed by **LangGraph** to contro
 
 ```mermaid
 graph TD
-    A[User Input] --> B(Developer)
+    A[User Input] --> TG(Test Generator)
+    TG --> B(Developer)
     B --> C(Critic)
     C -- Rejected --> B
     C -- Approved --> D(Tester)
